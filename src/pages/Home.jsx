@@ -1,10 +1,12 @@
 import React from "react";
+import { Routes, Route, Link } from "react-router-dom";
 import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import Button from 'react-bootstrap/Button';
 import './Home.css'
 import { BsFillCartPlusFill } from "react-icons/bs";
+import { FcCloseUpMode, FcViewDetails, FcSearch, FcPlus, FcContacts, FcHome } from "react-icons/fc";
 import Card from 'react-bootstrap/Card';
 
 let hasLogin = true
@@ -95,6 +97,13 @@ let products = [
 const Home = () => {
   const FlowerType = props => (
     <div>
+      <style type="text/css">
+        {`
+.btn-flowerType {
+background-color: #FFF0FA;
+}
+`}</style>
+      <FcCloseUpMode></FcCloseUpMode>
       <Button variant='flowerType' type="submit">{props.name} ({props.count})</Button>
     </div>
   )
@@ -108,8 +117,11 @@ const Home = () => {
           <Card.Text className="text-center">
             <p class="card-text">{product.type}</p>
             <div className='d-flex justify-content-around'>
-              <p class="card-text">Giá bán: {product.price} VNĐ</p>
-              <BsFillCartPlusFill href="#" className="mt-n3" color="pink" size={36}/>
+              <p class="card-text" style={{ color: "#FF5AC5", fontWeight: "bold" }}>Giá bán: {product.price} VNĐ</p>
+              <BsFillCartPlusFill
+                onMouseOver={({ target }) => target.style.color = "red"}
+                onMouseOut={({ target }) => target.style.color = "pink"}
+                href="#" className="mt-n3" color="pink" size={36} />
             </div>
           </Card.Text>
         </Card.Body>
@@ -118,11 +130,48 @@ const Home = () => {
   )
 
   return (
-    <div>
+    <div className="home-body">
       <Container fluid className="mx-0 px-0">
+        <style type="text/css">
+          {`
+    .btn-route a {
+      font-size: 18px;
+      background-color: pink;
+      color: white;
+    }
+    .btn-route a:hover {
+      background-color: pink;
+      color: white;
+      font-weight: bold;
+    }
+    .btn-route a:focus {
+      box-shadow:none !important;
+    }
+    .btn-route {
+      font-size: 18px;
+      background-color: pink;
+      color: white;
+    }
+    .btn-route:hover {
+      background-color: pink;
+      color: white;
+      font-weight: bold;
+    }
+    .btn-route:focus {
+      box-shadow:none !important;
+    }
+    `}
+        </style>
+        <Row className="route d-flex justify-content-around m-lg-1">
+          <Col md={2}><Button variant="route">Danh mục hoa</Button></Col>
+          <Col md={2}><Button variant="route"><FcHome></FcHome><Link to="/"> Trang chủ</Link></Button></Col>
+          <Col md={2}><Button variant="route"><FcSearch></FcSearch><Link to="/findproduct"> Tìm kiếm bó hoa</Link></Button></Col>
+          <Col md={2}><Button variant="route"><FcPlus></FcPlus><Link to="/addproduct"> Thêm bó hoa</Link></Button></Col>
+          <Col md={2}><Button variant="route"><FcContacts></FcContacts><Link to="/signup"> Đăng ký mới</Link></Button></Col>
+        </Row>
         <Row className="mx-0 px-0">
           <Col md={2} className='mx-0 px-0'>
-            <div className="categories">
+            <div className="mx-4 categories">
               <style type="text/css">
                 {`
     .btn-flowerType {
