@@ -1,0 +1,18 @@
+.title {
+    color: lightpink;
+    font-weight: bold;
+}
+
+.payment .col {
+    margin: 0px 0px;
+    padding: 0px 0px;
+}
+
+img {
+    width: 80%;
+    height: 80%;
+}
+
+.name {
+    font-size: 20px;
+}
