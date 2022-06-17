@@ -103,8 +103,10 @@ const Home = () => {
 background-color: #FFF0FA;
 }
 `}</style>
-      <FcCloseUpMode></FcCloseUpMode>
-      <Button variant='flowerType' type="submit">{props.name} ({props.count})</Button>
+      <div className="d-flex align-items-center">
+        <FcCloseUpMode></FcCloseUpMode>
+        <Button variant='flowerType' type="submit">{props.name} ({props.count})</Button>
+      </div>
     </div>
   )
 
@@ -181,7 +183,7 @@ background-color: #FFF0FA;
       text-decoration: underline;
     }
     .btn-flowerType:hover {
-      font-size: 18px;
+      font-size: 17px;  
       color: #ff5477;
     }
     .btn-flowerType:focus {

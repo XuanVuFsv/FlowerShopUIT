@@ -1,0 +1,22 @@
+.add-form {
+    margin: 50px 25%;
+    padding: 50px;
+    background-color: #FFF0FA;
+    border: 5px solid lightpink;
+    border-radius: 2%;
+}
+
+.add-form img {
+    border: 2px solid pink;
+    border-radius: 10%;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 25px;
+    max-width: 300px;
+    max-height: 300px;
+}
+
+.form {
+    margin-bottom: 10px;
+}

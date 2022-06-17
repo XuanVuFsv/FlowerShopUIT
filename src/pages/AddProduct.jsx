@@ -5,9 +5,12 @@ import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
 import './AddProduct.css'
 
+let typeFlowers = ['Hoa cúc', 'Hoa xuân', 'Hoa cưới']
+
 const AddProduct = () => {
     return (
         <div className='add-form'>
+            <img src="https://vnn-imgs-f.vgcloud.vn/2022/02/28/11/hoa2.jpg"></img>
             <Form>
                 <Form.Group as={Row} className="mb-3" controlId="product-name">
                     <Form.Label column sm="2">
@@ -17,10 +20,25 @@ const AddProduct = () => {
                         <Form.Control type="text" placeholder="Nhập tên bó hoa" />
                     </Col>
                 </Form.Group>
-                <Form.Select>
-                    <option>Loại hoa</option>
-                </Form.Select>
-                <Form.Group as={Row} className="mb-3" controlId="product-element">
+                <Form.Group as={Row} className="mb-3" controlId="select-type">
+                    <Form.Label column sm="2">
+                        Loại hoa
+                    </Form.Label>
+                    <Col sm="10">
+                        <Form.Select>
+                            <Form.Label>
+                                Tên bó hoa
+                            </Form.Label>
+
+                            {typeFlowers.map(item => (
+                                <>
+                                    <option>{item}</option>
+                                </>
+                            ))}
+                        </Form.Select>
+                    </Col>
+                </Form.Group>
+                <Form.Group as={Row} className="mb-3 mt-3" controlId="product-element">
                     <Form.Label column sm="2">
                         Thành phần
                     </Form.Label>
@@ -33,7 +51,7 @@ const AddProduct = () => {
                         Giá bán:
                     </Form.Label>
                     <Col sm="10">
-                        <Form.Control type="number" placeholder="..." />
+                        <Form.Control type="number" placeholder="...VNĐ" />
                     </Col>
                 </Form.Group>
                 <Form.Group controlId="formFile" className="mb-3">
