@@ -1,64 +1,64 @@
 .product-infor {
-    margin: 25px 100px;
-    background-color: #FFF0FA;
-    border: 5px solid;
-    border-color: pink;
+  margin: 25px 100px;
+  background-color: #fff0fa;
+  border: 5px solid;
+  border-color: pink;
 }
 
 .product-infor img {
-    width: 50.2%;
-    height: 75.3%;
-    border: 2px solid pink;
-    border-radius: 10%;
-    display: block;
-    margin-left: auto;
-    margin-right: auto;
-    margin-bottom: 25px;
+  width: 50.2%;
+  height: 75.3%;
+  border: 2px solid pink;
+  border-radius: 10%;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  margin-bottom: 25px;
 }
 
 .price {
-    font-size: 50px;
-    color: red;
-    margin-left: 5px;
+  font-size: 50px;
+  color: red;
+  margin-left: 5px;
 }
 
 .product-name {
-    font-weight: bold;
-    font-size: 40px;
+  font-weight: bold;
+  font-size: 40px;
 }
 
 .product-type {
-    font-size: 20px;
-    margin-top: 50px;
+  font-size: 20px;
+  margin-top: 50px;
 }
 
 .product-elements {
-    font-size: 20px;
-    margin-top: 50px;
+  font-size: 20px;
+  margin-top: 50px;
 }
 
 .product-price {
-    font-size: 20px;
-    margin-top: 50px;
+  font-size: 20px;
+  margin-top: 50px;
 }
 
 .product-count input {
-    width: 25%;
+  width: 25%;
 }
 
 .product-infor .btn {
-    background-color: white;
-    border: 2px solid pink;
-    border-radius: 5%;
-    color: lightpink;
+  background-color: white;
+  border: 2px solid lightcoral;
+  border-radius: 5%;
+  color: lightcoral;
 }
 
 .product-infor .btn:hover {
-    background-color: gainsboro;
-    border: 2px solid white;
-    border-radius: 5%;
-    color: white;
-    font-weight: bold;
+  background-color: gainsboro;
+  border: 2px solid lightcoral;
+  border-radius: 5%;
+  color: lightcoral;
+  font-weight: bold;
 }
 
 /* .btn:focus {

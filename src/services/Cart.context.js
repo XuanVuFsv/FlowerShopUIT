@@ -3,6 +3,7 @@ import http from '../services/http'
 const CartContext = createContext({
   order: null,
   items: [],
+  refresh: () => {},
 })
 
 export const CartProvider = ({ children }) => {
@@ -23,6 +24,7 @@ export const CartProvider = ({ children }) => {
           price: +o?.info?.price,
           src: `${process.env.REACT_APP_BASE_URL}${o?.info?.image}`,
         })),
+        refresh: () => setReload((s) => !s),
       })
     }
     getCurrentCart()
