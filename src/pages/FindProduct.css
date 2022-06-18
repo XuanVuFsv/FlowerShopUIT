@@ -2,30 +2,6 @@
     width: 500px;
 }
 
-.btn-find {
-    border: none;
-    width: 10%;
-    margin: 0 auto;
-    display: block;
-    background-color: pink;
-}
-
-.btn-find:hover {
-    border: none;
-    width: 10%;
-    margin: 0 auto;
-    display: block;
-    background-color: pink;
-}
-
-.btn-find:focus {
-    border: none;
-    width: 10%;
-    margin: 0 auto;
-    display: block;
-    background-color: pink;
-}
-
 .message {
     color: blue;
     font-weight: bold;

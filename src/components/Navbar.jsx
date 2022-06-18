@@ -8,11 +8,21 @@ import Payment from "./Payment";
 import './Navbar.css'
 import { FcPhone, FcClock, FcMenu, FcGlobe } from "react-icons/fc";
 import { Routes, Route, Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import Home from '../pages/Home'
 
-let hasLogin = false
 
 const Navbar = () => {
+  let username = 'admin'
+  let hasLogin = true
+
+  const pathname = window.location.pathname;
+  const navigate = useNavigate();
+
+  let handleSignout = () => {
+    navigate("/signout/" + username);
+  }
+
   return (
     <div className="nav-body">
       <style type="text/css">
@@ -48,8 +58,8 @@ const Navbar = () => {
             <Login hasLogin={hasLogin}></Login>
           </Col>
           <Col className="flex text-center">
-            <Payment name={hasLogin ? 'Name' : '...'}></Payment>
-            <Button hidden={!hasLogin} variant="logout" type="submit">
+            <Payment name={hasLogin ? 'Name' : username}></Payment>
+            <Button hidden={!hasLogin} variant="logout" type="submit" onClick={handleSignout}>
               Đăng xuất
             </Button>
           </Col>
