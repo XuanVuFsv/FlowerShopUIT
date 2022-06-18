@@ -1,27 +1,26 @@
-import React from "react";
-import Container from 'react-bootstrap/Container';
-import Row from 'react-bootstrap/Row';
-import Col from 'react-bootstrap/Col';
-import Button from 'react-bootstrap/Button';
-import Login from "./Login";
-import Payment from "./Payment";
+import React, { useState, useEffect } from 'react'
+import Container from 'react-bootstrap/Container'
+import Row from 'react-bootstrap/Row'
+import Col from 'react-bootstrap/Col'
+import Button from 'react-bootstrap/Button'
+import Login from './Login'
+import Payment from './Payment'
 import './Navbar.css'
-import { FcPhone, FcClock, FcMenu, FcGlobe } from "react-icons/fc";
-import { Routes, Route, Link } from "react-router-dom";
-import { useNavigate } from "react-router-dom";
+import { FcPhone, FcClock, FcMenu, FcGlobe } from 'react-icons/fc'
+import { Routes, Route, Link } from 'react-router-dom'
 import Home from '../pages/Home'
-
-
+import { isEmpty } from 'lodash'
+import { useNavigate } from 'react-router-dom'
 const Navbar = () => {
-  let username = 'admin'
-  let hasLogin = true
-
-  const pathname = window.location.pathname;
-  const navigate = useNavigate();
-
-  let handleSignout = () => {
-    navigate("/signout/" + username);
-  }
+  const [hasLogin, setLogin] = useState(false)
+  const history = useNavigate()
+  useEffect(() => {
+    const token = localStorage.getItem('accessToken')
+    setLogin(!isEmpty(token))
+    return () => {
+      setLogin(false)
+    }
+  }, [])
 
   return (
     <div className="nav-body">
@@ -46,20 +45,45 @@ const Navbar = () => {
       <Container fluid className="mx-0">
         <Row className="mx-0 pb-2 px-0 header">
           <Col className="logo">
-            <Link to="/"><img width={300} height={300} src="https://assets.flowerstore.vn/frontend/images/fs_vn_logo.svg" alt="" /></Link>
+            <Link to="/">
+              <img
+                width={300}
+                height={300}
+                src="https://assets.flowerstore.vn/frontend/images/fs_vn_logo.svg"
+                alt=""
+              />
+            </Link>
           </Col>
           <Col className="infor">
-            <p className="text-success"><FcPhone></FcPhone> (08) 9891234</p>
-            <p><FcClock></FcClock> (Giờ mở cửa: 8:00 - 22:00 mỗi ngày)</p>
-            <p><a className="fst-italic text-info" href="mailto:webmaster@example.com"><FcMenu></FcMenu> uitflower@gmail.com</a></p>
-            <a className="fst-italic text-bold" href="uitflower.com"><FcGlobe></FcGlobe> uitflower.com</a>
+            <p className="text-success">
+              <FcPhone></FcPhone> (08) 9891234
+            </p>
+            <p>
+              <FcClock></FcClock> (Giờ mở cửa: 8:00 - 22:00 mỗi ngày)
+            </p>
+            <p>
+              <a className="fst-italic text-info" href="mailto:webmaster@example.com">
+                <FcMenu></FcMenu> uitflower@gmail.com
+              </a>
+            </p>
+            <a className="fst-italic text-bold" href="uitflower.com">
+              <FcGlobe></FcGlobe> uitflower.com
+            </a>
           </Col>
           <Col>
-            <Login hasLogin={hasLogin}></Login>
+            <Login hasLogin={hasLogin} />
           </Col>
           <Col className="flex text-center">
-            <Payment name={hasLogin ? 'Name' : username}></Payment>
-            <Button hidden={!hasLogin} variant="logout" type="submit" onClick={handleSignout}>
+            <Payment name={hasLogin ? 'Name' : '...'}></Payment>
+            <Button
+              onClick={() => {
+                localStorage.clear()
+                setLogin(false)
+              }}
+              hidden={!hasLogin}
+              variant="logout"
+              type="submit"
+            >
               Đăng xuất
             </Button>
           </Col>
