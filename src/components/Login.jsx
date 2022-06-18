@@ -8,7 +8,7 @@ const Login = ({hasLogin}) => {
     if (!hasLogin) 
     {
         return (
-            <div>
+            <div className='login'>
                 <div className='text-center title'><b>Đăng nhập</b></div>
     
                 <Form>
@@ -24,20 +24,7 @@ const Login = ({hasLogin}) => {
                     {/* <Form.Group className="mb-1" controlId="formBasicCheckbox">
                         <Form.Check type="checkbox" label="Nhớ mật khẩu" />
                     </Form.Group> */}
-                    <style type="text/css">
-                        {`
-        .btn-custom {
-          background-color: pink;
-          color: white;
-          margin-top: 5px;
-        }
-        .btn-custom:hover {
-            color: white;
-            font-weight: bold;
-        }
-        `}
-                    </style>
-                    <Button variant='custom' type="submit">
+                    <Button type="submit">
                         Đăng nhập
                     </Button>
                 </Form>

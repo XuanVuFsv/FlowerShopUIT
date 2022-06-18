@@ -1,5 +1,6 @@
 import React from "react";
 import { Routes, Route, Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
@@ -95,6 +96,8 @@ let products = [
 
 
 const Home = () => {
+  const navigate = useNavigate();
+
   const FlowerType = props => (
     <div>
       <style type="text/css">
@@ -113,7 +116,12 @@ background-color: #FFF0FA;
   const Flower = product => (
     <div>
       <Card style={{ width: '18rem' }}>
-        <Card.Img variant="top" src={product.src} />
+        <Card.Img 
+        onClick={() => {
+          console.log(product.id)
+          navigate("/productinfor/" + product.id);
+        }}
+        variant="top" src={product.src} />
         <Card.Body className="text-center">
           <Card.Title>{product.name}</Card.Title>
           <Card.Text className="text-center">
@@ -212,6 +220,7 @@ background-color: #FFF0FA;
               {products.map(product => (
                 <Flower
                   key={product.id}
+                  id={product.id}
                   name={product.name}
                   price={product.price}
                   type={product.type}

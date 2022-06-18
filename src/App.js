@@ -1,5 +1,11 @@
 import * as React from "react";
-import { Routes, Route, Link } from "react-router-dom";
+import {
+  BrowserRouter,
+  Routes,
+  Route,
+  Link,
+  useParams
+} from "react-router-dom";
 import './App.css';
 import Home from './pages/Home.jsx';
 import Navbar from "./components/Navbar";
@@ -23,7 +29,9 @@ function App() {
         <Route path="/yourcart" element={<Cart></Cart>} />
         <Route path="/findproduct" element={<FindProduct></FindProduct>} />
         <Route path="/payment" element={<Pay></Pay>} />
-        <Route path="/productinfor" element={<ProductInfor></ProductInfor>} />
+        <Route path="/productinfor" element={<Home />} exact/>
+        <Route path="/productinfor/:id" element={<ProductInfor />} />
+        {/* <Route path="/productinfor" element={<ProductInfor></ProductInfor>} /> */}
         <Route path="/signout" element={<Signout></Signout>} />
         <Route path="/signup" element={<Signup></Signup>} />
       </Routes>

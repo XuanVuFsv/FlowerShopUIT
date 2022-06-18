@@ -5,3 +5,18 @@
 .form-label {
     font-weight: bold;
 }
+
+.login .btn {
+    width: 150px;
+    border: none;
+    background-color: pink;
+    color: white;
+    margin-top: 5px;
+}
+
+.login .btn:hover {
+    border: none;
+    background-color: pink;
+    color: white;
+    font-weight: bold;
+}

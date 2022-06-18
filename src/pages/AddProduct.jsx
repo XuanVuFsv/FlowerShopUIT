@@ -40,7 +40,7 @@ const AddProduct = () => {
                 </Form.Group>
                 <Form.Group as={Row} className="mb-3 mt-3" controlId="product-element">
                     <Form.Label column sm="2">
-                        Thành phần
+                        Bao gồm
                     </Form.Label>
                     <Col sm="10">
                         <Form.Control type="text" placeholder="Thành phần bó hoa..." />
@@ -54,14 +54,16 @@ const AddProduct = () => {
                         <Form.Control type="number" placeholder="...VNĐ" />
                     </Col>
                 </Form.Group>
-                <Form.Group controlId="formFile" className="mb-3">
-                    <Form.Label>Hình ảnh bó hoa</Form.Label>
-                    <Form.Control type="file" />
+                <Form.Group as={Row} controlId="file-upload" className="mb-3">
+                    <Form.Label column sm="2">Hình ảnh</Form.Label>
+                    <Col sm="10">
+                        <Form.Control type="file" />
+                    </Col>
                 </Form.Group>
                 <style type="text/css">
                     {`
         .btn-add {
-          background-color: pink;
+            background-color: pink;
           color: white;
           margin-top: -5px;
         }
