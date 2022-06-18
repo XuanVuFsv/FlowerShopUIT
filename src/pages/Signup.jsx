@@ -2,6 +2,7 @@ import React from 'react'
 import { useState } from 'react';
 import './Signup.css'
 import axios from 'axios';
+import { BsPhoneFill } from 'react-icons/bs';
 
 const Signup = () => {
   // States for registration
@@ -17,6 +18,10 @@ const Signup = () => {
   // States for checking the errors
   const [submitted, setSubmitted] = useState(false);
   const [error, setError] = useState(false);
+
+  let message = ''
+  let regexPasword = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[a-zA-Z]).{8,}$/;
+  let regexEmail = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
 
   // Handling the name change
   const handleName = (e) => {
@@ -59,7 +64,11 @@ const Signup = () => {
   // Handling the form submission
   const handleSubmit = (e) => {
     e.preventDefault();
-    if (name === '' || email === '' || password === '') {
+    if (name === '' || email === '' || password === '' || confirmpassword == '' || username =='' || adress == '' || phone == '') {
+      if (password != confirmpassword) errorMessage = 'Xác nhận lại mật khẩu'
+      if (regexPasword.test(password)) errorMessage = 'Mật khẩu yếu';
+      if (regexEmail.test(email)) errorMessage = 'Email không hợp lệ';
+
       setError(true);
     } else {
       setSubmitted(true);
@@ -75,7 +84,7 @@ const Signup = () => {
         style={{
           display: submitted ? '' : 'none',
         }}>
-        <h1>User {name} successfully registered!!</h1>
+        <h1>Đăng ký thành công</h1>
       </div>
     );
   };
@@ -88,7 +97,7 @@ const Signup = () => {
         style={{
           display: error ? '' : 'none',
         }}>
-        <h1>Please enter all the fields</h1>
+        <h1>Kiểm tra lại thông tin</h1>
       </div>
     );
   };
@@ -109,8 +118,8 @@ const Signup = () => {
       <form>
         {/* Labels and inputs for form data */}
         <label className="label">Tên đăng nhập</label>
-        <input onChange={handleName} className="input"
-          value={name} type="text" />
+        <input onChange={handleUsername} className="input"
+          value={username} type="text" />
 
         <label className="label">Mật khẩu</label>
         <input onChange={handlePassword} className="input"
@@ -118,10 +127,10 @@ const Signup = () => {
 
         <label className="label">Xác nhận mật khẩu</label>
         <input onChange={handleConfirrmPassword} className="input"
-          value={password} type="password" />
+          value={confirmpassword} type="password" />
 
-        <label className="label">Tên đăng nhập</label>
-        <input onChange={handleUsername} className="input"
+        <label className="label">Họ và tên</label>
+        <input onChange={handleName} className="input"
           value={name} type="text" />
 
         <label className="label">Địa chỉ Email</label>
@@ -129,12 +138,12 @@ const Signup = () => {
           value={email} type="email" />
 
         <label className="label">Địa chỉ Liên lạc</label>
-        <input onChange={handleUsername} className="input"
-          value={email} type="email" />
+        <input onChange={handleAdress} className="input"
+          value={adress} type="email" />
 
         <label className="label">Số điện thoại</label>
         <input onChange={handlePhone} className="input"
-          value={email} type="email" />
+          value={phone} type="email" />
 
         <button onClick={handleSubmit} className="btn-signup" type="submit">
           Đăng ký

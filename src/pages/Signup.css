@@ -38,8 +38,8 @@
    
   .error{
     display: block;
-    background-color: red;
-    color: white;
+    background-color: pink;
+    color: red;
     width: fit-content;
     height: 50px;
     padding: 5px;
