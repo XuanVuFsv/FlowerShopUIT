@@ -1,13 +1,32 @@
-import React from 'react'
+import React, {useEffect, useState} from 'react'
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
 import './AddProduct.css'
+import http from '../services/http';
 
 let typeFlowers = ['Hoa cúc', 'Hoa xuân', 'Hoa cưới']
+// let categories = []
 
 const AddProduct = () => {
+    // const [categories, setCategories] = useState([]);
+    // const [categories, setCategories] = useState([]);
+    // const [categories, setCategories] = useState([]);
+    // const [categories, setCategories] = useState([]);
+    // const [categories, setCategories] = useState([]);
+
+    useEffect(() => {
+        http.get('/category/')
+        .then(function (response) {
+            setCategories(response.data)
+            // categories.map(item => console.log(item.name))
+        })
+        .catch(function (error) {
+          console.log(error);
+        });
+    })
+
     return (
         <div className='add-form'>
             <img src="https://vnn-imgs-f.vgcloud.vn/2022/02/28/11/hoa2.jpg"></img>
@@ -26,13 +45,9 @@ const AddProduct = () => {
                     </Form.Label>
                     <Col sm="10">
                         <Form.Select>
-                            <Form.Label>
-                                Tên bó hoa
-                            </Form.Label>
-
-                            {typeFlowers.map(item => (
+                            { categories.map(item => (
                                 <>
-                                    <option>{item}</option>
+                                    <option>{item.name}</option>
                                 </>
                             ))}
                         </Form.Select>

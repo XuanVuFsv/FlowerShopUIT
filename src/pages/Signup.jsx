@@ -77,7 +77,7 @@ const Signup = () => {
         "last_name": lastName,
         "email": email,
         "password": password,
-        "role": "User",
+        "role": "Admin",
         "address": adress,
         "phone": phone
       }
