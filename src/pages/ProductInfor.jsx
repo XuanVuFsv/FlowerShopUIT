@@ -20,11 +20,13 @@ const ProductInfor = () => {
   const [counter, setCounter] = useState('')
   const [reload, setReload] = useState(false)
   const [currentProduct, setCurrentProduct] = useState('')
-  const { items, refresh } = useCartContext()
+  const { items, refresh, order } = useCartContext()
+
+  const user = useMemo(() => localStorage.getItem('userInfo'), [localStorage.getItem('userInfo')])
 
   const isExistCart = useMemo(
     () =>
-      !isEmpty(items) && !isEmpty(currentProduct)
+      order?.status === 'Waiting' && !isEmpty(items) && !isEmpty(currentProduct)
         ? items.find((o) => o?.id === currentProduct?.id)
         : null,
     [items, currentProduct],
@@ -90,20 +92,25 @@ const ProductInfor = () => {
               <b>Giá:</b>
               <span className="price">{currentProduct.price} VNĐ</span>
             </p>
-            <Form>
-              <Form.Group as={Row} className="mb-3" controlId="product-price">
-                <Form.Label column sm="2">
-                  Số lượng:
-                </Form.Label>
-                <Col sm="10" className="product-count">
-                  <Form.Control type="number" value={counter} onChange={handleCounterChange} />
-                </Col>
-              </Form.Group>
-            </Form>
-            <Button onClick={AddToCart}>
-              <BsFillCartPlusFill href="#" className="mt-n3" color="lightcoral" size={36} />
-              {isExistCart?.count ? 'Cập nhật giỏ hàng' : 'Thêm vào giỏ hàng'}
-            </Button>
+            {user && (
+              <>
+                <Form>
+                  <Form.Group as={Row} className="mb-3" controlId="product-price">
+                    <Form.Label column sm="2">
+                      Số lượng:
+                    </Form.Label>
+                    <Col sm="10" className="product-count">
+                      <Form.Control type="number" value={counter} onChange={handleCounterChange} />
+                    </Col>
+                  </Form.Group>
+                </Form>
+
+                <Button onClick={AddToCart}>
+                  <BsFillCartPlusFill href="#" className="mt-n3" color="lightcoral" size={36} />
+                  {isExistCart?.count ? 'Cập nhật giỏ hàng' : 'Thêm vào giỏ hàng'}
+                </Button>
+              </>
+            )}
             <br></br>
             <br></br>
             <br></br>

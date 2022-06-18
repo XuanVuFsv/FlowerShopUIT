@@ -23,7 +23,7 @@ const Cart = () => {
   const cart = useCartContext()
 
   useEffect(() => {
-    setCompleted(true)
+    setCompleted(cart?.order?.status === 'Done')
   }, [cart?.order?.status])
 
   const updateAddress = async (addr) => {
@@ -42,7 +42,7 @@ const Cart = () => {
 
   const deleteItems = async (id) => {
     if (completed) return
-    const data = { orderId: id, quantity: 0 }
+    const data = { itemId: id, quantity: 0 }
     const posting = await http.post('/cart', data)
     if (posting) {
       console.log('🚀 ~ file: ProductInfor.jsx ~ line 64 ~ AddToCart ~ posting', posting)
