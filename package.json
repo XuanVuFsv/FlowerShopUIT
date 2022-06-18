@@ -44,6 +44,4 @@
   },
   "devDependencies": {
     "react-router-dom": "^6.3.0"
-  },
-  "proxy": "http://localhost:9000"
-}
+  }}
