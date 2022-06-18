@@ -7,11 +7,18 @@ import Pagination from 'react-bootstrap/Pagination'
 import Row from 'react-bootstrap/Row'
 import { BsFillCartPlusFill } from 'react-icons/bs'
 import { FcCloseUpMode, FcContacts, FcHome, FcPlus, FcSearch } from 'react-icons/fc'
-import { Link, useNavigate } from 'react-router-dom'
+import { Link, Route, Routes, useNavigate } from 'react-router-dom'
 import { useCartContext } from '../services/Cart.context'
 import http from '../services/http'
 import './Home.css'
-
+import AddProduct from './AddProduct.jsx'
+import Cart from './Cart.jsx'
+import FindProduct from './FindProduct.jsx'
+import Pay from './Pay.jsx'
+import ProductInfor from './ProductInfor.jsx'
+import Signout from './Signout.jsx'
+import Signup from './Signup.jsx'
+import numeral from 'numeral'
 const Home = () => {
   const navigate = useNavigate()
 
@@ -20,7 +27,7 @@ const Home = () => {
   const [products, setProducts] = useState([])
   const [q, setQuery] = useState({
     skip: 0,
-    limit: 12,
+    limit: 15,
     totalDocs: 0,
     category: null,
   })
@@ -49,6 +56,7 @@ const Home = () => {
   const onFilterByCategory = (id) => {
     console.log('🚀 ~ file: Home.jsx ~ line 50 ~ onFilterByCategory ~ id', id)
     setQuery((q) => ({ ...q, category: id }))
+    navigate('/')
   }
 
   useEffect(() => {
@@ -102,7 +110,7 @@ const Home = () => {
                   class="card-text"
                   style={{ color: '#FF5AC5', fontWeight: 'bold', marginBottom: 0 }}
                 >
-                  Giá bán: {product.price} VNĐ
+                  Giá bán: {numeral(product.price).format('0,000')} VNĐ
                 </p>
                 <BsFillCartPlusFill
                   onMouseOver={({ target }) => (target.style.color = 'red')}
@@ -236,20 +244,38 @@ const Home = () => {
             </div>
           </Col>
           <Col md={10}>
-            <div>{q.category && <h1>{products[0]?.category?.name}</h1>}</div>
-            <div className="products">
-              {products.map((product) => (
-                <Flower
-                  key={product?._id}
-                  id={product?._id}
-                  name={product?.name}
-                  price={product?.price}
-                  type={product?.category?.name}
-                  src={process.env.REACT_APP_BASE_URL + product?.image}
-                />
-              ))}
-            </div>
-            <Pagination style={{ justifyContent: 'center' }}>{PaginationItems}</Pagination>
+            <Routes>
+              <Route
+                path="/"
+                element={
+                  <>
+                    <div>{q.category && <h1>{products[0]?.category?.name}</h1>}</div>
+                    <div className="products">
+                      {products.map((product) => (
+                        <Flower
+                          key={product?._id}
+                          id={product?._id}
+                          name={product?.name}
+                          price={product?.price}
+                          type={product?.category?.name}
+                          src={process.env.REACT_APP_BASE_URL + product?.image}
+                        />
+                      ))}
+                    </div>
+                    <Pagination style={{ justifyContent: 'center' }}>{PaginationItems}</Pagination>
+                  </>
+                }
+              />
+              <Route path="/addproduct" element={<AddProduct></AddProduct>} />
+              <Route path="/yourcart" element={<Cart></Cart>} />
+              <Route path="/findproduct" element={<FindProduct></FindProduct>} />
+              <Route path="/payment" element={<Pay></Pay>} />
+              <Route path="/productinfor" element={<Home />} exact />
+              <Route path="/productinfor/:id" element={<ProductInfor />} />
+              {/* <Route path="/productinfor" element={<ProductInfor></ProductInfor>} /> */}
+              <Route path="/signout/:name" element={<Signout></Signout>} />
+              <Route path="/signup" element={<Signup></Signup>} />
+            </Routes>
           </Col>
         </Row>
       </Container>

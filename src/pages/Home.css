@@ -1,68 +1,68 @@
 .home-body {
-    margin: 25px 100px;
-    background-color: #FFF0FA;
+  margin: 25px 10px;
+  background-color: #fff0fa;
 }
 
 .flower-type {
-    background-color: white;
-    color: lightpink;
-    font-weight: bold;
-    text-decoration: underline;
+  background-color: white;
+  color: lightpink;
+  font-weight: bold;
+  text-decoration: underline;
 }
 
 .flower-type:hover {
-    font-size: 15px;
+  font-size: 15px;
 }
 
 div > .card {
-    border-radius: 5%;
-    border: 1px solid;
-    border-color: pink;
-    margin-bottom: 10px;
-    margin-left: 3px;
-    margin-right: 3px;
+  border-radius: 5%;
+  border: 1px solid;
+  border-color: pink;
+  margin-bottom: 10px;
+  margin-left: 3px;
+  margin-right: 3px;
 }
 
 .card img {
-    padding: 15px;
-    border-bottom: 0.75px solid gray;
+  padding: 15px;
+  border-bottom: 0.75px solid gray;
 }
 
 .card img:hover {
-    padding: 10px;
-    display: block;
-    box-shadow: 2px 2px 1px gray;
-    -webkit-box-shadow: 2px 2px 1px gray;
-    -moz-box-shadow: 2px 2px 1px gray;
+  padding: 10px;
+  display: block;
+  box-shadow: 2px 2px 1px gray;
+  -webkit-box-shadow: 2px 2px 1px gray;
+  -moz-box-shadow: 2px 2px 1px gray;
 }
 
 .products {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
 }
 
 .decorate {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
 }
 
 .decorate img {
-    margin-top: 5px;
-    border-style: solid;
-    border-color: pink;
-    margin-left: 50px;
-    border-radius: 10%;
-    width: 200px;
-    height: 300px;
+  margin-top: 5px;
+  border-style: solid;
+  border-color: pink;
+  margin-left: 50px;
+  border-radius: 10%;
+  width: 200px;
+  height: 300px;
 }
 
 body {
-    background-color: pink;
+  background-color: pink;
 }
 
 .products {
-    padding-top: 5px;
-    padding-bottom: 10px;
+  padding-top: 5px;
+  padding-bottom: 10px;
 }

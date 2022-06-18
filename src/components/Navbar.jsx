@@ -8,6 +8,7 @@ import { Link } from 'react-router-dom'
 import Login from './Login'
 import './Navbar.css'
 import Payment from './Payment'
+
 const Navbar = () => {
   const [userInfo, setUserInfo] = useState()
   useEffect(() => {
@@ -44,7 +45,7 @@ const Navbar = () => {
             <Link to="/">
               <img
                 width={300}
-                height={300}
+                height={200}
                 src="https://assets.flowerstore.vn/frontend/images/fs_vn_logo.svg"
                 alt=""
               />

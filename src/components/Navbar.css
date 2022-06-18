@@ -1,19 +1,23 @@
-.logo {
-    margin-top: -25px;
+.nav-body {
+  margin-top: 20px;
 }
 
-.infor{
-    margin-left: -20px;
+.logo {
+  margin-top: -25px;
+}
+
+.infor {
+  margin-left: -20px;
 }
 
 .infor p {
-    margin-bottom: 5px;
+  margin-bottom: 5px;
 }
 
 .route {
-    background-color: pink;
+  background-color: pink;
 }
 
 .header {
-    background-color: white;
+  background-color: white;
 }

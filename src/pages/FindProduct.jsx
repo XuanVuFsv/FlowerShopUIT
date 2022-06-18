@@ -11,7 +11,7 @@ import Spinner from 'react-bootstrap/Spinner'
 import { BsFillCartPlusFill } from 'react-icons/bs'
 import { useNavigate } from 'react-router-dom'
 import http from '../services/http'
-
+import numeral from 'numeral'
 import './FindProduct.css'
 
 const FindProduct = () => {
@@ -89,7 +89,7 @@ const FindProduct = () => {
             <p class="card-text">{product.type}</p>
             <div className="d-flex justify-content-around">
               <p class="card-text" style={{ color: '#FF5AC5', fontWeight: 'bold' }}>
-                Giá bán: {product.price} VNĐ
+                Giá bán: {numeral(product.price).format('0,000')} VNĐ
               </p>
               <BsFillCartPlusFill
                 onMouseOver={({ target }) => (target.style.color = 'red')}

@@ -13,7 +13,7 @@ import Button from 'react-bootstrap/Button'
 import http from '../services/http'
 import { useCartContext } from '../services/Cart.context'
 import { isEmpty } from 'lodash'
-
+import numeral from 'numeral'
 const Cart = () => {
   const navigate = useNavigate()
 
@@ -82,7 +82,8 @@ const Cart = () => {
           </Col>
           <Col md={6}>
             <b>
-              Giá: <span style={{ color: 'red' }}>{product.price} VNĐ</span>
+              Giá:{' '}
+              <span style={{ color: 'red' }}>{numeral(product.price).format('0,000')} VNĐ</span>
             </b>
             <br></br>
             <Form>

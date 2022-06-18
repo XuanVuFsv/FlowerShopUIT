@@ -4,6 +4,7 @@ import { Row, Col } from 'react-bootstrap'
 import { BsFillCartPlusFill } from 'react-icons/bs'
 import { Link } from 'react-router-dom'
 import { useCartContext } from '../services/Cart.context'
+import numeral from 'numeral'
 
 export const UserInfo = ({ name }) => {
   const { order } = useCartContext()
@@ -23,7 +24,10 @@ export const UserInfo = ({ name }) => {
         <Col>
           <Link to="/yourcart">
             <BsFillCartPlusFill href="#" className="mt-n3" color="lightblue" size={36} />
-            <b>Giỏ hàng của tôi {total && status === 'Waiting' && `- (${total}) VNĐ`}</b>
+            <b>
+              Giỏ hàng của tôi{' '}
+              {total && status === 'Waiting' && `- (${numeral(total).format('0,000')}) VNĐ`}
+            </b>
           </Link>
         </Col>
       </Row>

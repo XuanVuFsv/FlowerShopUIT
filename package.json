@@ -10,6 +10,7 @@
     "bootstrap": "^5.1.3",
     "jsonwebtoken": "^8.5.1",
     "lodash": "^4.17.21",
+    "numeral": "^2.0.6",
     "react": "^18.1.0",
     "react-bootstrap": "^2.4.0",
     "react-dom": "^18.1.0",
@@ -44,4 +45,5 @@
   },
   "devDependencies": {
     "react-router-dom": "^6.3.0"
-  }}
+  }
+}
