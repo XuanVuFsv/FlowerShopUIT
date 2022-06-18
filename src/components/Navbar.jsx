@@ -1,24 +1,20 @@
-import React, { useState, useEffect } from 'react'
+import { useEffect, useState } from 'react'
+import Button from 'react-bootstrap/Button'
+import Col from 'react-bootstrap/Col'
 import Container from 'react-bootstrap/Container'
 import Row from 'react-bootstrap/Row'
-import Col from 'react-bootstrap/Col'
-import Button from 'react-bootstrap/Button'
+import { FcClock, FcGlobe, FcMenu, FcPhone } from 'react-icons/fc'
+import { Link } from 'react-router-dom'
 import Login from './Login'
-import Payment from './Payment'
 import './Navbar.css'
-import { FcPhone, FcClock, FcMenu, FcGlobe } from 'react-icons/fc'
-import { Routes, Route, Link } from 'react-router-dom'
-import Home from '../pages/Home'
-import { isEmpty } from 'lodash'
-import { useNavigate } from 'react-router-dom'
+import Payment from './Payment'
 const Navbar = () => {
-  const [hasLogin, setLogin] = useState(false)
-  const history = useNavigate()
+  const [userInfo, setUserInfo] = useState()
   useEffect(() => {
-    const token = localStorage.getItem('accessToken')
-    setLogin(!isEmpty(token))
+    const user = localStorage.getItem('userInfo')
+    setUserInfo(JSON.parse(user))
     return () => {
-      setLogin(false)
+      setUserInfo()
     }
   }, [])
 
@@ -71,16 +67,16 @@ const Navbar = () => {
             </a>
           </Col>
           <Col>
-            <Login hasLogin={hasLogin} />
+            <Login {...{ userInfo, setUserInfo }} />
           </Col>
           <Col className="flex text-center">
-            <Payment name={hasLogin ? 'Name' : '...'}></Payment>
+            <Payment name={userInfo?.name}></Payment>
             <Button
               onClick={() => {
                 localStorage.clear()
-                setLogin(false)
+                setUserInfo(false)
               }}
-              hidden={!hasLogin}
+              hidden={!userInfo}
               variant="logout"
               type="submit"
             >

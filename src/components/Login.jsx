@@ -5,9 +5,7 @@ import './Login.css'
 import { useForm } from 'react-hook-form'
 import http from '../services/http'
 
-const Login = ({ hasLogin }) => {
-  const [userInfo, setUserInfo] = useState()
-
+const Login = ({ userInfo, setUserInfo }) => {
   const {
     register,
     handleSubmit,
@@ -18,7 +16,6 @@ const Login = ({ hasLogin }) => {
   const onSubmit = async (body) => {
     const { data } = await http.post('/login', body)
 
-    console.log('🚀 ~ file: Cart.jsx ~ line 22 ~ loadData  ~  {data}', { data })
     localStorage.setItem('accessToken', data?.token)
     delete data?.token
     setUserInfo(data)
@@ -69,7 +66,7 @@ const Login = ({ hasLogin }) => {
             </Form>
           </>
         ) : (
-          <> Hello {userInfo?.name} </>
+          <> </>
         )}
       </div>
     </>
