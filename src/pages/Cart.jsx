@@ -19,14 +19,7 @@ const Cart = () => {
   //   const loadData = async () => {
   //     const { data } = await http.post('/login', { email: 'thanha1@gmail.com', password: '1' }, {})
 
-  //     console.log('🚀 ~ file: Cart.jsx ~ line 22 ~ loadData  ~  {data}', { data })
-
-  //     localStorage.setItem('accessToken', data?.token)
-  //   }
-
-  //   loadData()
-  //   return () => {}
-  // }, [])
+  let cash = []
 
   const handleCounterChange = (e) => {
     setCounter(Math.abs(Math.floor(e.target.value)))
@@ -59,7 +52,21 @@ const Cart = () => {
     },
   ]
 
-  const Product = (product) => (
+  let Sum = () => {
+    let sum = 0
+    cash = cart.map((product) => 
+      {
+        return product.price * product.count;
+      })
+
+      for (let i of cash)
+      {
+        sum += i;
+      }
+      return sum;
+  }
+
+  const Product = product => (
     <div>
       <Container fluid className="">
         <Row className="">
@@ -119,10 +126,8 @@ const Cart = () => {
           </Col>
           <Col md={1}></Col>
           <Col md={3} className="bill">
-            <p>Thành tiền: ...</p>
-            <Button variant="success" style={{ marginTop: '10px' }}>
-              Giao hàng
-            </Button>
+            <p><b>Thành tiền: </b>{Sum()} VNĐ</p>
+            <Button variant="success"  style={{marginTop: '10px', marginBottom: '5px' }}>Giao hàng</Button>
           </Col>
           <Col md={1}></Col>
         </Row>

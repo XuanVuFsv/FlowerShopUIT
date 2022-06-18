@@ -48,7 +48,7 @@ const FindProduct = () => {
 
   const Flower = product => (
     <div>
-      <Card style={{ width: '18rem' }}>
+      <Card style={{ width: '18rem', marginTop: '20px'}}>
         <Card.Img
           onClick={() => {
             console.log(product.id)
@@ -81,31 +81,31 @@ const FindProduct = () => {
               <Form.Group className='d-flex justify-content-center' controlId="find-product">
                 <div className='find-product-input'>
                   <Form.Control
-                    type="text" placeholder="..."
+                    type="text" placeholder="Nhập từ khóa tìm kiếm"
                     value={keyword}
                     onChange={handleKeywordChange}
                   />
                 </div>
+                <Button>
+                  Tìm kiếm
+                </Button>
               </Form.Group>
             </Form>
           </Col>
-          <Button className='btn-find mt-3 mb-5'>
-            Tìm kiếm
-          </Button>
         </Row>
       </Container>
       {
-      [].map(product => (
-        <Flower
-          key={product.id}
-          id={product.id}
-          name={product.name}
-          price={product.price}
-          type={product.type}
-          src={product.src}>
-        </Flower>
-      ))}
-      <p className='message' hidden={!none}>Không có sản sản phẩm phù hợp</p>
+        products.map(product => (
+          <Flower
+            key={product.id}
+            id={product.id}
+            name={product.name}
+            price={product.price}
+            type={product.type}
+            src={product.src}>
+          </Flower>
+        ))}
+      <p className='message' hidden={none}>Không có sản sản phẩm phù hợp</p>
     </div>
   )
 }

@@ -6,6 +6,8 @@
 }
 
 .product-infor img {
+    width: 50.2%;
+    height: 75.3%;
     border: 2px solid pink;
     border-radius: 10%;
     display: block;
@@ -44,14 +46,14 @@
     width: 25%;
 }
 
-.btn {
+.product-infor .btn {
     background-color: white;
     border: 2px solid pink;
     border-radius: 5%;
     color: lightpink;
 }
 
-.btn:hover {
+.product-infor .btn:hover {
     background-color: gainsboro;
     border: 2px solid white;
     border-radius: 5%;

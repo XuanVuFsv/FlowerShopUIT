@@ -1,7 +1,12 @@
 .product-incart {
     background-color: #FFF0FA;
+    border: 5px solid;
+    border-color: pink;
 }
 
 .bill {
     background-color: #FFF0FA;
+    border: 5px solid;
+    border-color: pink;
+    height: 30%;
 }
