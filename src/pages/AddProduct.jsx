@@ -7,15 +7,17 @@ import './AddProduct.css'
 import http from '../services/http'
 import { useForm } from 'react-hook-form'
 import { useNavigate } from 'react-router-dom'
+import { useCategoriesData } from './hooks/useCategoriesData'
 
 let typeFlowers = ['Hoa cúc', 'Hoa xuân', 'Hoa cưới']
 // let categories = []
 
 const AddProduct = () => {
-    const [image, setImage] = useState()
-    const navigate = useNavigate()
-    const { register, handleSubmit, watch, formState } = useForm()
-    const [categories, setCategories] = useState([])
+  const [image, setImage] = useState()
+  const navigate = useNavigate()
+  const { register, handleSubmit, watch, formState } = useForm()
+  const [categories, setCategories] = useState([])
+  const dataCategories = useCategoriesData()
 
   useEffect(() => {
     http
