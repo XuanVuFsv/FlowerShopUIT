@@ -1,7 +1,22 @@
 {
-  "name": "react-app",
+  "name": "flower-shop-react-app",
+  "author": "@xuanvufsv",
   "version": "0.1.0",
-  "private": true,
+  "license": "ISC",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/XuanVuFsv/FlowerShopUIT.git"
+  },
+  "description": "Simple react web for flower shop",
+  "keywords": [
+    "tea",
+    "node",
+    "social",
+    "frontend",
+    "FE",
+    "web3",
+    "web"
+  ],
   "dependencies": {
     "@testing-library/jest-dom": "^5.16.4",
     "@testing-library/react": "^13.3.0",
@@ -16,7 +31,10 @@
     "react-hook-form": "^7.32.2",
     "react-icons": "^4.4.0",
     "react-scripts": "5.0.1",
-    "web-vitals": "^2.1.4"
+    "web-vitals": "^2.1.4",
+    "@xuanvufsv/imgpack": "1.0.6",
+    "@xuanvufsv/simple-social-web-tea-test": "1.0.2",
+    "@trungdegea/web3-react": "1.0.2"
   },
   "scripts": {
     "start": "react-scripts start",
@@ -44,4 +62,10 @@
   },
   "devDependencies": {
     "react-router-dom": "^6.3.0"
-  }}
+  },
+  "bugs": {
+    "url": "https://github.com/XuanVuFsv/FlowerShopUIT/issues"
+  },
+  "homepage": "https://github.com/XuanVuFsv/FlowerShopUIT#readme",
+  "main": "source/index.js"
+}
